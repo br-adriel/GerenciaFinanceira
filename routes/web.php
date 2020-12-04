@@ -2,57 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-//Aula ao-vivo
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/users', function() {
-    //return "Olá pessoal";
-
-    $lista = [
-        'Maria',
-        'João',
-        'José',
-    ];
-    
-    return view('users', ['usuarios'=> $lista]);
-});
-
-Route::get('/user/{nome}', function($nome){
-	return $nome;
-})->name('usuario-ind');
-*/
-
-
-
-//Rotas da tarefa 30/11/2020
 //página inicial
-Route::get('/', function() {
-	return view('pagina-inicial');
-})->name('pagina-inicial');
+Route::view('/', 'pagina-inicial')->name('pagina-inicial');
 
 //página de login
-Route::get('/entrar', function() {
-	return view('entrar');
-})->name('entrar');
+Route::view('/entrar', 'entrar')->name('entrar');
 
 //página de cadastro
-Route::get('/cadastrar', function() {
-	return view('cadastrar');
-})->name('cadastrar');
+Route::view('/cadastrar', 'cadastrar')->name('cadastrar');
 
 //url para logoff do usuário
 Route::get('/sair', function() {
@@ -61,16 +18,14 @@ Route::get('/sair', function() {
 
 
 //crud receitas
-Route::get('/receita/criar', function() {
-	return view('receita-criar');
-})->name('receita-criar');
+Route::view('/receita/criar', 'receita.criar')->name('receita-criar');
 
 Route::get('/receita/{id}', function($id) {
-	return view('receita', ['idReceita'=>$id]);
+	return view('receita.receita', ['idReceita'=>$id]);
 })->name('receita');
 
 Route::get('/receita/{id}/editar', function($id) {
-	return view('receita-editar', ['idReceita'=>$id]);
+	return view('receita.editar', ['idReceita'=>$id]);
 })->name('receita-editar');
 
 Route::get('/receita/{id}/excluir', function($id) {
@@ -79,16 +34,14 @@ Route::get('/receita/{id}/excluir', function($id) {
 
 
 //crud despesas
-Route::get('/despesa/criar', function() {
-	return view('despesa-criar');
-})->name('despesa-criar');
+Route::view('/despesa/criar', 'despesa.criar')->name('despesa-criar');
 
 Route::get('/despesa/{id}', function($id) {
-	return view('despesa', ['idDespesa'=>$id]);
+	return view('despesa.despesa', ['idDespesa'=>$id]);
 })->name('despesa');
 
 Route::get('/despesa/{id}/editar', function($id) {
-	return view('despesa-editar', ['idDespesa'=>$id]);
+	return view('despesa.editar', ['idDespesa'=>$id]);
 })->name('despesa-editar');
 
 Route::get('/despesa/{id}/excluir', function($id) {
@@ -98,15 +51,15 @@ Route::get('/despesa/{id}/excluir', function($id) {
 
 //crud parcela da despesa
 Route::get('/despesa/{$id}/parcela/criar', function($id) {
-	return view('parcela-criar', ['idDespesa'=>$id]);
+	return view('parcela.criar', ['idDespesa'=>$id]);
 })->name('parcela-criar');
 
 Route::get('/despesa/parcela/{id}', function($id) {
-	return view('parcela', ['idParcela'=>$id]);
+	return view('parcela.parcela', ['idParcela'=>$id]);
 })->name('parcela');
 
 Route::get('/despesa/parcelq/{id}/editar', function($id) {
-	return view('parcela-editar', ['idParcela'=>$id]);
+	return view('parcela.editar', ['idParcela'=>$id]);
 })->name('parcela-editar');
 
 Route::get('/despesa/parcela/{id}/excluir', function($id) {
@@ -116,15 +69,15 @@ Route::get('/despesa/parcela/{id}/excluir', function($id) {
 
 //crud tipo da despesa
 Route::get('/despesa/{id}/tipo/criar', function($id) {
-	return view('tipo-despesa-criar', ['idDespesa'=>$id]);
+	return view('tipo-despesa.criar', ['idDespesa'=>$id]);
 })->name('tipo-despesa-criar');
 
 Route::get('/despesa/tipo/{id}', function($id) {
-	return view('tipo-despesa', ['idTipoDespesa'=>$id]);
+	return view('tipo-despesa.tipo-despesa', ['idTipoDespesa'=>$id]);
 })->name('tipo-despesa');
 
 Route::get('/despesa/tipo/{id}/editar', function($id) {
-	return view('tipo-despesa-editar', ['idTipoDespesa'=>$id]);
+	return view('tipo-despesa.editar', ['idTipoDespesa'=>$id]);
 })->name('tipo-despesa-editar');
 
 Route::get('/despesa/tipo/{id}/excluir', function($id) {
