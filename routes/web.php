@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AutenticacaoController;
 use App\Http\Controllers\DespesaController;
 use App\Http\Controllers\ParcelaController;
 use App\Http\Controllers\ReceitaController;
@@ -11,10 +12,12 @@ use App\Http\Controllers\TipoDespesaController;
 Route::view('/', 'pagina-inicial')->name('pagina-inicial');
 
 //página de login
-Route::view('/entrar', 'entrar')->name('entrar');
+Route::get('/entrar', [AutenticacaoController::class, 'entrar']
+)->name('entrar');
 
 //página de cadastro
-Route::view('/cadastrar', 'cadastrar')->name('cadastrar');
+Route::get('/cadastrar', [AutenticacaoController::class, 'cadastrar']
+)->name('cadastrar');
 
 //url para logoff do usuário
 Route::get('/sair', function() {
