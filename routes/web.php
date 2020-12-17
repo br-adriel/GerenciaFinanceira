@@ -9,7 +9,7 @@ use App\Http\Controllers\ReceitaController;
 use App\Http\Controllers\TipoDespesaController;
 
 //página inicial
-Route::view('/', 'pagina-inicial')->name('pagina-inicial');
+Route::view('/', 'index')->name('pagina-inicial');
 
 //página de login
 Route::get('/entrar', [AutenticacaoController::class, 'entrar']
